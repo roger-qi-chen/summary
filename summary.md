@@ -1,7 +1,7 @@
 ## AWS
 	EC2
 		reboot 
-		stop restart后public IP会变化
+		stop / restart后public IP会变化
 		
 		$ ssh ec2-user@13.239.19.231
 		$ df -hT /dev/xvda1 查看EC2 EBS 使用量
@@ -28,8 +28,6 @@
 
 		cat id_rsa.pub
 		Import public key to EC2 Key Pairs
-
-
 
 
 

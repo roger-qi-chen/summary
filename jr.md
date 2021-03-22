@@ -90,7 +90,6 @@ Standup meeting
 5 计划学习一下如何在AWS的EC2上搭建一个Jenkins Server用于我们OAP以及后续项目的持续集成和持续部署,也就是我们说的CI/CD。希望哪位开发OAP的同学帮我介绍一下OAP项目。
 
 
-尹航
 Application 到YAML
 RDS(Relational Database Service) 太贵
 因为主要是题和答案
@@ -766,7 +765,7 @@ Creating placeholder flownodes because failed loading originals.
 
 
 
-3月29 
+## 3月29 
 
 Standup meeting 
 1 我继续调查了一下Jenkins Server 崩溃的情况，也做了些测试，发现的确与EBS Volume的剩余容量太小有关系，目前剩余3.8GB， 除了建的项目外，大量的plug-in也会占用一部分空间，Cloudwatch上关于EBS的指数突然变化的时间，和前天job build以及昨天压力测试的时间也是吻合的。也想跟老板商量一下，看咱们EBS再增大10G或20G?
@@ -784,7 +783,7 @@ OAP项目：
  
 
 
-3月21日
+## 3月21日
 
 安装Docker Compose
 $ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -792,6 +791,136 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 
 
 ## 3月22日
+026559016816
+Standup meeting
+1 上周五已经增大了EBS的存储量到120Gb，目前没有再发现因空间不足导致的服务器崩溃。
+
+2 关于EC2的管理，我想问一下老板，了解一下别的EC2，比如JR web和uat jiangren 是怎么管理的？ 我看绑定的是
+同一个key pair（jrbne）。目前Jenkins Server是用我电脑的public key 创建的key pair。我那台电脑有点问题想换一台，发现EC2创建后不能修改key pair了。
+
+3 目前我还在做OAP-9的ticket，在npm build的时候是遇到了些问题。
+> umi build
+WARN [WARN] update `jsx: "react"` into `jsx: "react-jsx"` to suport the new JSX transform in React 17 in tsconfig.json
+[info] [webpackbar] Compiling Webpack
+/var/jenkins_home/workspace/oap-frontend-uat/node_modules/esbuild/bin/esbuild:2
+throw new Error(`esbuild: Failed to install correctly
+
+想和developer了解一下，frontend目前是什么进展，我这边目前是否可以拿master branch的代码去测试pipeline？
+
+
+package.json 引入包 让所有developer用同样的东西
+node.js的版本: 14
+fix 错误
+
+npm的fix解决不了，需要
+npm run test
+npm run link
+warn还是error
+有错误不能merge进去
+
+
+OAP request.js
+
+
+
+ECR: Amazon Elastic Container Registry (ECR) 
+ECS: Amazon Elastic Container Service (Amazon ECS)
+
+026559016816
+launch-wizard-jr
+
+AWS Systems Manager
+Session Manager
+
+## 3月23日
+除了SSH(Secure Shell)远程连接EC2外，AWS提供了另外2种connect EC2的方式：
+1 在Console上点击EC2 Instance Connect 可以打开一个页面版的termianal，进到EC2内部。
+2 Session Manager：
+
+i-0380b6ddd509b6ad5
+
+
+Node.js版本 12.13.0
+6.12.0
+
+12.18.0
+
+Node 10.19.0
+npm 6.14.4
+
+
+也是用npm构建对吧？ 
+
+umi框架
+
+
+OAP前端部署只是S3 bucket外还有其他AWS资源需求吗？
+
+build完后的路径 比如 jr-admin在dist
+jr-admin/dist
+
+
+有没有页面的截图 我看看
+
+
+"analyze": "cross-env ANALYZE=1 umi build",
+"build": "umi build",
+"deploy": "npm run site && npm run gh-pages",
+"dev": "npm run start:dev",
+"fetch:blocks": "pro fetch-blocks && npm run prettier",
+"gh-pages": "gh-pages -d dist",
+"i18n-remove": "pro i18n-remove --locale=zh-CN --write",
+"postinstall": "umi g tmp",
+
+"lint": "umi g tmp && npm run lint:js && npm run lint:style && npm run lint:prettier",
+"lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
+"lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && npm run lint:style",
+"lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+"lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
+"lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
+
+"precommit": "lint-staged",
+"prettier": "prettier -c --write \"src/**/*\"",
+"start": "cross-env UMI_ENV=dev umi dev",
+"start:dev": "cross-env REACT_APP_ENV=dev MOCK=none UMI_ENV=dev umi dev",
+"start:no-mock": "cross-env MOCK=none UMI_ENV=dev umi dev",
+"start:no-ui": "cross-env UMI_UI=none UMI_ENV=dev umi dev",
+"start:pre": "cross-env REACT_APP_ENV=pre UMI_ENV=dev umi dev",
+"start:test": "cross-env REACT_APP_ENV=test MOCK=none UMI_ENV=dev umi dev",
+
+"pretest": "node ./tests/beforeTest",
+
+"test": "umi test",
+"test:all": "node ./tests/run-tests.js",
+"test:component": "umi test ./src/components",
+
+"tsc": "tsc --noEmit"
+
+lint 代码规范
+
+Node.js
+nvm 
+
+
+
+venv
+
+
+npm 
+yarn 包之间conflict 
+
+webpack
+
+
+https://pro.ant.design/docs
+
+
+
+
+
+
+
+
 
 
 
