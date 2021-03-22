@@ -106,9 +106,19 @@
 	|
 
 ## Kubernetes
-	$ kubectl get pods
-	$ kubectl exce 进入running container
-	$ kubectl logs [NAME]
+	# kind
+		kind is a tool for running local Kubernetes clusters using Docker container “nodes”.
+		kind was primarily designed for testing Kubernetes itself, but may be used for local development or CI.
+
+
+	# kubectl
+		The Kubernetes command-line tool allows you to run commands against Kubernetes clusters.
+		Install: 
+			curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+		$ kubectl get pods
+		$ kubectl exce 进入running container
+		$ kubectl logs [NAME]
 
 
 ## Docker
@@ -206,8 +216,12 @@
 		$ docker search
 
 	# Docker Compose
-	$ docker-compose build
-	
+		Install Docker Compose
+			$ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+			$ sudo chmod +x /usr/local/bin/docker-compose
+
+			$ docker-compose build
+			$ docker-compose up
 
 	# Docker Swarm
 	$ docker swarm init
