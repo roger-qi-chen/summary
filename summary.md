@@ -4,9 +4,35 @@
 		stop / restart后public IP会变化
 		
 		$ ssh ec2-user@13.239.19.231
+
 		$ df -hT /dev/xvda1 查看EC2 EBS 使用量
 
+		.pem
+		$ chmod 400 jr-jenkins.pem 
+		$ ssh -i "jr-jenkins.pem" ec2-user@13.239.19.231
+		$ ssh -i "jr-jenkins.pem" ec2-user@ec2-13-239-19-231.ap-southeast-2.compute.amazonaws.com
+
 	CloudWacth
+
+	awscli
+		sudo apt install awscli
+		aws configure
+		aws configure –profile default
+		cat ~/.aws/credentials 
+	
+	S3
+		$ aws s3 ls
+		$ aws s3 mk s3://xxx
+		$ aws s3 rb s3://xxx
+		$ aws s3 cp /xxx/xxx s3://xxx
+			(e.g. aws s3 cp /etc/nginx/sites-availabel/default s3://roger-demo)
+		$ aws s3 ls s3://xxx
+			(e.g. ws s3 ls s3://roger-demo)
+		$ aws s3 sync . s3://xxx
+		$ aws s3 sync /xxx/xxx s3://xxx
+
+    Cloudformation
+    	$ aws cloudformation create-stack --stack-name <value> --template-body <value> (e.g. aws cloudformation create-stack --stack-name myBucket --template-body file://s3-bucket.json)
 
 
 ## Docker 
@@ -66,9 +92,15 @@
 
 
 ## Terraform
-   $ terraform init
-   $ terraform plan
-   $ terraform apply
+	安装 https://www.terraform.io/docs/cli/install/apt.html
+	$ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+	$ sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+	$ sudo apt install terraform
+
+	$ terraform init
+	$ terraform plan
+	$ terraform apply
+	$ terraform destory
 
 
 ## 正则表达式
@@ -251,7 +283,8 @@
 
 
 ## pip
-	pip -V 版本确认
+	安装 $ sudo apt-get install python-pip
+	pip -V / pip --version 版本确认
 	pip list 列出本地安装包
 	pip install [package_name] 包安装
 	pip install -U [package_name] 包更新
@@ -518,24 +551,6 @@
 		(e.g. vagrant scp requirements.txt /home/vagrant/)
 	vagarnt box 
 
-## AWS
-	aws configure
-	aws configure –profile default
-	
-	# S3
-	$ aws s3 ls
-	$ aws s3 mk s3://xxx
-	$ aws s3 rb s3://xxx
-	$ aws s3 cp /xxx/xxx s3://xxx
-		(e.g. aws s3 cp /etc/nginx/sites-availabel/default s3://roger-demo)
-	$ aws s3 ls s3://xxx
-		(e.g. ws s3 ls s3://roger-demo)
-	$ aws s3 sync . s3://xxx
-	$ aws s3 sync /xxx/xxx s3://xxx
-
-    # Cloudformation
-    $ aws cloudformation create-stack --stack-name <value> --template-body <value> (e.g. aws cloudformation create-stack --stack-name myBucket --template-body file://s3-bucket.json)
-    $ aws
 
 
 

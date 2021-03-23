@@ -832,10 +832,7 @@ launch-wizard-jr
 AWS Systems Manager
 Session Manager
 
-## 3月23日
-除了SSH(Secure Shell)远程连接EC2外，AWS提供了另外2种connect EC2的方式：
-1 在Console上点击EC2 Instance Connect 可以打开一个页面版的termianal，进到EC2内部。
-2 Session Manager：
+
 
 i-0380b6ddd509b6ad5
 
@@ -915,6 +912,18 @@ webpack
 https://pro.ant.design/docs
 
 
+## 3月23日
+1 昨天在John的帮助下，我们把Jenkins EC2的key pair替换掉了，因为之前的是导入生成的，没法分享给别的人登录。现在替换成文件文件形式的key后，可以通过把文件分享有权限的人登录。
+当然，除了SSH(Secure Shell)远程连接EC2外，AWS提供了另外2种connect EC2的方式：
+1）在Console上点击EC2 Instance Connect 可以打开一个页面版的termianal，进到EC2内部。
+2）Session Manager
+但都是要登consol的页面上去。
+
+2 OAP前端部署，发现npm install后虽然有node_moudle 和 lock.json文件生成,但貌似
+
+
+oap.jiangren.com.au
+oap.jiangren.com.au.s3-website-ap-southeast-2.amazonaws.com
 
 
 
