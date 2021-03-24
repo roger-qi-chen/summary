@@ -329,6 +329,7 @@
 
 	# Local repository
 		$ git add [file name] 从工作区提交到暂存区
+		$ git rm <file name or directory>
 		$ git commit [file name]
 			$ git commit -m "Comment" [file name] 从暂存区更新到本地库
 			$ git commit --amend 再次修改，重新add后commit，这样就还是一条log信息
